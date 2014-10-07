@@ -1,0 +1,7 @@
+<library path="lib/libstepback_recovery">
+  <class name="stepback_recovery/StepbackRecovery" type="stepback_recovery::StepbackRecovery" base_class_type="nav_core::RecoveryBehavior">
+    <description>
+      A recovery behavior that slightly moves back the robot to attempt to clear out space.
+    </description>
+  </class>
+</library>
