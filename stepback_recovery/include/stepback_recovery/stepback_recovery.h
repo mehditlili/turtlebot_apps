@@ -48,8 +48,8 @@
 
 namespace stepback_recovery{
   /**
-   * @class RotateRecovery
-   * @brief A recovery behavior that rotates the robot in-place to attempt to clear out space
+   * @class StepbackRecovery
+   * @brief A recovery behavior that moves back the robot to attempt to clear out space
    */
   class StepbackRecovery : public nav_core::RecoveryBehavior {
     public:
@@ -61,7 +61,7 @@ namespace stepback_recovery{
       StepbackRecovery();
 
       /**
-       * @brief  Initialization function for the RotateRecovery recovery behavior
+       * @brief  Initialization function for the StepbackRecovery recovery behavior
        * @param tf A pointer to a transform listener
        * @param global_costmap A pointer to the global_costmap used by the navigation stack 
        * @param local_costmap A pointer to the local_costmap used by the navigation stack 
@@ -70,12 +70,12 @@ namespace stepback_recovery{
           costmap_2d::Costmap2DROS* global_costmap, costmap_2d::Costmap2DROS* local_costmap);
 
       /**
-       * @brief  Run the RotateRecovery recovery behavior.
+       * @brief  Run the stepback recovery behavior.
        */
       void runBehavior();
 
       /**
-       * @brief  Destructor for the rotate recovery behavior
+       * @brief  Destructor for the stepback recovery behavior
        */
       ~StepbackRecovery();
 

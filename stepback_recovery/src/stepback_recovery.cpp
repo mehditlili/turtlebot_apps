@@ -57,7 +57,7 @@ void StepbackRecovery::initialize(std::string name, tf::TransformListener* tf,
     ros::NodeHandle private_nh("~/" + name_);
     ros::NodeHandle blp_nh("~/TrajectoryPlannerROS");
 
-    //we'll simulate every degree by default
+    //Stepping back 10 cm per default
     private_nh.param("stepback_length", stepback_length_, 0.1);
     private_nh.param("frequency", frequency_, 10.0);
 
@@ -78,6 +78,7 @@ void StepbackRecovery::initialize(std::string name, tf::TransformListener* tf,
 StepbackRecovery::~StepbackRecovery(){
   delete world_model_;
 }
+
 
 double StepbackRecovery::getTranslation(double x0, double y0){
 	tf::StampedTransform transform;
@@ -121,7 +122,7 @@ void StepbackRecovery::runBehavior(){
   while(n.ok()){
 
     //compute the distance left to move
-    double dist_left = 0.2 - getTranslation(x0, y0);
+    double dist_left = stepback_length_ - getTranslation(x0, y0);
 
     //compute the velocity that will let us stop by the time we reach the goal
     double vel = sqrt(acc_lim_th_ * dist_left);
@@ -136,12 +137,12 @@ void StepbackRecovery::runBehavior(){
 
     vel_pub.publish(cmd_vel);
 
-    //makes sure that we won't decide we're done right after we start
+    //Check if already moved back the whole distance
     ROS_DEBUG("Stepback behavior: Distance left %f meters", dist_left);
     if(dist_left < 0.0)
       stepped_back = true;
 
-    //if we're done with our in-place rotation... then return
+    //if we're done with our stepping back... then return
     if(stepped_back)
       return;
 

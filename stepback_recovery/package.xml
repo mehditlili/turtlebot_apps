@@ -3,15 +3,15 @@
     <version>1.11.13</version>
     <description>
 
-        This package provides a recovery behavior for the navigation stack that attempts to clear space by performing a 360 degree rotation of the robot.
+        This package provides a recovery behavior for the navigation stack that attempts to unstuck the robot by moving it backwards by a user defined distance
 
     </description>
-    <author>Eitan Marder-Eppstein</author>
-    <author>contradict@gmail.com</author>
-    <maintainer email="davidvlu@gmail.com">David V. Lu!!</maintainer>
-    <maintainer email="fergs@unboundedrobotics.com">Michael Ferguson</maintainer>
+    <author>Mehdi Tlili</author>
+    <author>mehdi.tlili@gmail.com</author>
+    <maintainer email="mehdi.tlili@gmail.com">Mehdi Tlili</maintainer>
+
     <license>BSD</license>
-    <url>http://wiki.ros.org/rotate_recovery</url>
+    <url>http://wiki.ros.org/stepback_recovery</url>
 
     <buildtool_depend>catkin</buildtool_depend>
 
